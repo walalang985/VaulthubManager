@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/view_source_code"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/launch"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/dl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="187dp"
+        android:text="@string/download_vaulthub"
+        app:layout_constraintBottom_toBottomOf="@+id/remove"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/remove" />
+
+    <Button
+        android:id="@+id/installer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/install_vaulthub"
+        app:layout_constraintStart_toStartOf="@+id/dl"
+        app:layout_constraintTop_toBottomOf="@+id/dl" />
+
+    <Button
+        android:id="@+id/keygen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/generate_your_keys"
+        app:layout_constraintStart_toStartOf="@+id/installer"
+        app:layout_constraintTop_toBottomOf="@+id/installer" />
+
+    <Button
+        android:id="@+id/launch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/launch_vaulthub"
+        app:layout_constraintBottom_toBottomOf="@+id/keygen"
+        app:layout_constraintStart_toStartOf="@+id/remove"
+        app:layout_constraintTop_toTopOf="@+id/keygen" />
+
+    <Button
+        android:id="@+id/remove"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="42dp"
+        android:layout_marginBottom="1dp"
+        android:text="@string/uninstall_vaulthub"
+        app:layout_constraintBottom_toTopOf="@+id/code"
+        app:layout_constraintStart_toEndOf="@+id/dl" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="31dp"
+        android:text="Hello World!"
+        android:textSize="36sp"
+        app:layout_constraintStart_toStartOf="@+id/dl"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Vaulthub Manager" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
