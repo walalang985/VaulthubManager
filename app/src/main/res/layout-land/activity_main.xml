@@ -7,23 +7,22 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/code"
+        android:id="@+id/launch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/view_source_code"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/launch"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="@string/launch_vaulthub"
+        app:layout_constraintStart_toStartOf="@+id/remove"
+        app:layout_constraintTop_toBottomOf="@+id/installer" />
 
     <Button
         android:id="@+id/dl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="187dp"
+        android:layout_marginEnd="42dp"
         android:text="@string/download_vaulthub"
-        app:layout_constraintBottom_toBottomOf="@+id/remove"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/remove" />
+        app:layout_constraintBottom_toBottomOf="@+id/keygen"
+        app:layout_constraintEnd_toStartOf="@+id/keygen"
+        app:layout_constraintTop_toTopOf="@+id/keygen" />
 
     <Button
         android:id="@+id/installer"
@@ -34,41 +33,56 @@
         app:layout_constraintTop_toBottomOf="@+id/dl" />
 
     <Button
-        android:id="@+id/keygen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/generate_your_keys"
-        app:layout_constraintStart_toStartOf="@+id/installer"
-        app:layout_constraintTop_toBottomOf="@+id/installer" />
-
-    <Button
-        android:id="@+id/launch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/launch_vaulthub"
-        app:layout_constraintBottom_toBottomOf="@+id/keygen"
-        app:layout_constraintStart_toStartOf="@+id/remove"
-        app:layout_constraintTop_toTopOf="@+id/keygen" />
-
-    <Button
         android:id="@+id/remove"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="42dp"
-        android:layout_marginBottom="1dp"
+        android:layout_marginEnd="47dp"
         android:text="@string/uninstall_vaulthub"
-        app:layout_constraintBottom_toTopOf="@+id/code"
-        app:layout_constraintStart_toEndOf="@+id/dl" />
+        app:layout_constraintEnd_toStartOf="@+id/code"
+        app:layout_constraintTop_toBottomOf="@+id/launch" />
+
+    <Button
+        android:id="@+id/keygen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="33dp"
+        android:text="@string/generate_your_keys"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/removeThis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/uninstall_vaulthub_manager"
+        app:layout_constraintStart_toStartOf="@+id/code"
+        app:layout_constraintTop_toBottomOf="@+id/delete" />
+
+    <Button
+        android:id="@+id/code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/view_source_code"
+        app:layout_constraintStart_toStartOf="@+id/delete"
+        app:layout_constraintTop_toBottomOf="@+id/removeThis" />
+
+    <Button
+        android:id="@+id/delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/delete_keys"
+        app:layout_constraintStart_toStartOf="@+id/keygen"
+        app:layout_constraintTop_toBottomOf="@+id/keygen" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
         android:layout_marginTop="31dp"
         android:text="Hello World!"
         android:textSize="36sp"
-        app:layout_constraintStart_toStartOf="@+id/dl"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Vaulthub Manager" />
 

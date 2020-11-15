@@ -13,6 +13,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -23,13 +24,14 @@ import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 public class MainActivity extends AppCompatActivity {
     final String dlDir = "/sdcard/Download";
-    final String keyDir = Environment.getExternalStorageDirectory().getPath() + "/Vaulthub";
+    final String keyDir = "/sdcard/Vaulthub";
     final String[] privatekeys = {keyDir + "/loginKeys/privateKey.key", keyDir + "/userKeys/privateKey.key"};
     final String[] publickeys = {keyDir + "/loginKeys/publicKey.key", keyDir + "/userKeys/publicKey.key"};
     final String apkPath = dlDir + "/Vaulthub.apk";
     final String name = "apc.mobprog.vaulthub";
     final int Ver = Build.VERSION.SDK_INT;
     final Uri vaulthub = Uri.parse( "package:apc.mobprog.vaulthub" );
+    final Uri manager = Uri.parse( "package:apc.mobprog.vaulthubmanager" );
     final Uri vaulthubSRC = Uri.parse( "https://github.com/walalang985/Vaulthub" );
     final Uri vaulthubDL = Uri.parse("https://download1513.mediafire.com/bgzdhankq4dg/miswrsfw7nwbmi5/Vaulthub.apk");
     @Override
@@ -40,10 +42,10 @@ public class MainActivity extends AppCompatActivity {
             if(!granted()){
                 requestPermissions();
             }else {
-                System.exit( 1 );
+                return;
             }
         }
-        Button dl = findViewById( R.id.dl ), install = findViewById( R.id.installer ), gen = findViewById( R.id.keygen ), uninstall = findViewById( R.id.remove ), launcher = findViewById( R.id.launch ), viewsrc = findViewById( R.id.code );
+        Button deleteK = findViewById( R.id.delete ), dl = findViewById( R.id.dl ), install = findViewById( R.id.installer ), gen = findViewById( R.id.keygen ), uninstall = findViewById( R.id.remove ), launcher = findViewById( R.id.launch ), viewsrc = findViewById( R.id.code ), removethis = findViewById( R.id.removeThis );
         dl.setOnClickListener( v -> {
             if(new File( apkPath ).exists()){
                 Toast.makeText( getApplicationContext() , "File has already been downloaded", Toast.LENGTH_SHORT ).show();
@@ -59,6 +61,14 @@ public class MainActivity extends AppCompatActivity {
             startActivity( intent );
 
 
+        } );
+        deleteK.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                File file = new File( "/sdcard/Vaulthub" );
+                boolean delete = file.delete();
+                Log.d("tag", Boolean.toString( delete ));
+            }
         } );
         gen.setOnClickListener( v -> {
             PackageManager pm = getApplicationContext().getPackageManager();
@@ -107,30 +117,21 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(Intent.ACTION_DELETE);
             intent.setData( vaulthub );
             startActivity( intent );
-            File file = new File( keyDir );
-            if(file.exists() && !isInstalled( pm )){
-                file.delete();
+        } );
+        launcher.setOnClickListener( v -> {
+            PackageManager pm = getApplicationContext().getPackageManager();
+            Intent intent = getPackageManager().getLaunchIntentForPackage( name );
+            if(isInstalled( pm )){
+                startActivity( intent );
             }else{
-                Toast.makeText( getApplicationContext(), "Files are already deleted and the app is already uninstalled", Toast.LENGTH_SHORT ).show();
+                Toast.makeText( getApplicationContext(), "Vaulthub is not yet installed", Toast.LENGTH_SHORT ).show();
             }
         } );
-        launcher.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                PackageManager pm = getApplicationContext().getPackageManager();
-                Intent intent = getPackageManager().getLaunchIntentForPackage( name );
-                if(isInstalled( pm )){
-                    startActivity( intent );
-                }else{
-                    Toast.makeText( getApplicationContext(), "Vaulthub is not yet installed", Toast.LENGTH_SHORT ).show();
-                }
-            }
-        } );
-        viewsrc.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity( new Intent(Intent.ACTION_VIEW,vaulthubSRC ) );
-            }
+        viewsrc.setOnClickListener( v -> startActivity( new Intent(Intent.ACTION_VIEW,vaulthubSRC ) ) );
+        removethis.setOnClickListener( v -> {
+            Intent intent = new Intent(Intent.ACTION_DELETE);
+            intent.setData( manager );
+            startActivity( intent );
         } );
     }
     public void requestPermissions(){

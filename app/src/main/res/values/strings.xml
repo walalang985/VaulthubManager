@@ -6,4 +6,6 @@
     <string name="uninstall_vaulthub">Uninstall Vaulthub</string>
     <string name="view_source_code">View Source Code</string>
     <string name="launch_vaulthub">Launch Vaulthub</string>
+    <string name="uninstall_vaulthub_manager">Uninstall Vaulthub Manager</string>
+    <string name="delete_keys">Delete Keys</string>
 </resources>
