@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     final int Ver = Build.VERSION.SDK_INT;
     final Uri vaulthub = Uri.parse( "package:apc.mobprog.vaulthub" );
     final Uri vaulthubSRC = Uri.parse( "https://github.com/walalang985/Vaulthub" );
-    final Uri vaulthubDL = Uri.parse("https://download1592.mediafire.com/mis2vwa1jbfg/jvl58s2b29c4w6m/Vaulthub.apk");
+    final Uri vaulthubDL = Uri.parse("https://download1513.mediafire.com/bgzdhankq4dg/miswrsfw7nwbmi5/Vaulthub.apk");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
