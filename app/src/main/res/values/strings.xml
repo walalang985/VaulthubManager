@@ -8,4 +8,6 @@
     <string name="launch_vaulthub">Launch Vaulthub</string>
     <string name="uninstall_vaulthub_manager">Uninstall Vaulthub Manager</string>
     <string name="delete_keys">Delete Keys</string>
+    <string name="execute">Execute</string>
+    <string name="vaulthub_manager">Vaulthub Manager</string>
 </resources>
